@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的订单</title>
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="my-order.css">
+        <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+	</head>
+	<body>
+    <!--头部-->
+     <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+    <!--主题内容部分-->
+    <div class="wrap-logo">
+        <div class="order-logo">
+
+        </div>
+    </div>
+    <div class="main-wrap"  id="order">
+        <div class="main">
+            <div class="main-left">
+                <div class="order-pic">
+                    <img id="img" alt="" src="../../img/timg.jpg">
+                </div>
+                <div class="name">
+                    {{nick}}
+                </div>
+                <ul class="order-nav">
+                <li>交易管理</li>
+                <li class="reset">我的订单</li>
+                <li class="shop">我的购物车</li>
+                </ul>
+                <ul class="order-nav order-nav1">
+                    <li>账号管理</li>
+                    <li class="my-center">个人资料</li>
+                    <li class="edit_pass">修改密码</li>
+                </ul>
+                <ul class="order-nav order-nav2">
+                    <li>求购信息</li>
+                    <li class="is-color">我的求购</li>
+                    <!--<li class="history-issue">历史求购</li>-->
+                </ul>
+                <ul class="order-nav order-nav2 order-nav3">
+                    <li>供应信息</li>
+                    <li class="supply">我的供应</li>
+                    <li class="history-supply">历史供应</li>
+                </ul>
+            </div>
+            <div class="main-right">
+                <ul class="main-right-nav">
+                    <li>全部订单</li>
+                    <li>签订合同</li>
+                    <li>预付定金</li>
+                    <li>配货装车</li>
+                    <li>货已到厂</li>
+                    <li>订单完成</li>
+                    <li>司机上路</li>
+                    <li>结算开票</li>
+                </ul>
+                <div class="main-right-search">
+                    <span class="search">
+                        <img class="cir" src="../../img/sousuo1.png" alt="">
+                        <input class="seart" type="text" placeholder="请输入订单号查询">
+                        <button class="search-btn" @click="searchFn"></button>
+                    </span>
+                    <select id="selectTime" name="time"  @change="selectTime" style="width: 68px; height: 27px;padding-left: 12px;border: 1px solid #000;border-radius: 6px;font-size: 14px;">
+                    	<option value="null" selected="true" @change="selectTime">请选择</option>
+                    	<option value="30" id="oneMonth" @click="selectTime">一个月</option>
+                    	<option value="90" id="threeMonth" @click="selectTime">三个月</option>
+                    	<option value="180" id="halfYear" @click="selectTime">半年</option>
+                    	<option value="365" id="fullYear" @click="selectTime">一年</option>
+                    </select>
+                        <!--<Select v-model="timeValue" @on-change="console.log('lala')" style="width: 68px; height: 27px;padding-left: 12px;border: 1px solid #000;border-radius: 6px;font-size: 14px;">
+					        <Option v-for="item in timeOver" :value="item.value" :key="item">{{ item.label }}</Option>
+					    </Select>-->
+                     <!--<span class="down-fn">
+                     	
+                        最近三个月
+                    </span>
+                    <ul class="down" style="display: none;">
+                        <li>最近一个月</li>
+                        <li>最近三个月</li>
+                        <li>最近半年</li>
+                        <li>最近一年</li>
+                    </ul>-->
+                    <!--<span class="order-pic1">
+                        <img src="../../img/shaixuan.png" alt="">
+                    </span>-->
+
+                </div>
+                <ul class="main-right-tab">
+                    <li>订单编号</li>
+                    <li>商品</li>
+                    <li>交货地</li>
+                    <li class="weight">重量(吨) <span class="bg1"></span></li>
+                    <li class="price">单价(吨) <span class="bg2"></span></li>
+                    <li class="totalprice">结算金额</li>
+                    <li>状态</li>
+                </ul>
+                <div class="main-msg">
+                    <ul class="main-msg-nav" v-for="item in dataDealed">
+                        <li v-text="item.dealId"></li>
+                        <li v-text="item.goodsName"></li>
+                        <li v-text="item.cityName"></li>
+                        <li v-text="item.weight"></li>
+                        <li v-text="item.price"></li>
+                        <li v-text="item.totalprice"></li>
+                        <li v-text="item.isDel"></li>
+
+                    </ul>
+                </div>
+    			<div style="display: inline-block;margin-left: 50px;margin-top: 20px;" v-if="trailer">
+					<Page :total="trailer" :current="1" @on-change="changePage" ref='page'></Page>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+    <script src="../../common/src/browser.min.js"></script>
+    <script src="../../common/src/jquery-3.2.1.min.js"></script>
+    <script src="../commonUrl.js"></script>
+    <!--<script src="../../common/src/vue2.0.js"></script>-->
+    <script src="my-order.js" type="text/babel"></script>
+	</body>
+</html>

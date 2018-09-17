@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+</head>
+<body>
+<!--头部-->
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<!--主题内容-->
+<div class="main-wrap" id="shopId">
+    <div class="main">
+        <div class="main-tit">
+            <div class="main-tit-txt">
+                <img src="../../img/shop.jpg" style="height:100px;width:150px;" alt="">
+            </div>
+            <div class="main-tit-bot">
+                <iframe src="../../common/step.html" width="500px" height="90" scrolling="no" frameborder="0"></iframe>
+            </div>
+        </div>
+        <ul class="nav1">
+            <li class="nav1-li"><img class="all" src="../../img/fuxuan_1.png" alt="全选"  ><span>全选</span></li>
+            <li>商品名称</li>
+            <li>规格</li>
+            <li>牌号</li>
+            <li>产地</li>
+            <li class="weight">重量(吨) <span class="bg1"></span></li>
+            <li class="price">单价(吨) <span class="bg2"></span></li>
+            <li>供应商</li>
+            <li>操作</li>
+        </ul>
+        <div class="nav2-li">
+            <ul class="nav2-li2" v-for="(item,index) in getCarArr" :carId="item.carId">
+                <li><img class="place replace"  src="../../img/fuxuan1.png" alt=""></li>
+                <li v-text="item.goodsName"></li>
+                <li v-text="item.specName"></li>
+                <li v-text="item.gradeName"></li>
+                <li v-text="item.cityName"></li>
+                <li v-text="item.weight"></li>
+                <li v-text="item.total"></li>
+                <li v-text="item.company"></li>
+                <li class="nav2-last">
+                    <span class="remove" @click="removeFn(index)">删除</span>
+                </li>
+            </ul>
+
+        </div>
+        <div class="ordered">
+            <div class="ordered-txt">
+                <p>
+                    <span>商品重量:</span>
+                    <span class="yColor">{{totalWeight | unitFn}}</span>
+                    <span>共</span>
+                    <span class="yColor" v-text="uint">8</span>
+                    <span>单</span>
+                </p>
+                <p>
+                    <span>
+                        商品总额(不含运费):
+                    </span>
+                    <span class="yColor">
+                        <span>&yen</span>
+                        <span v-text="totalPrice">
+
+                        </span>
+                    </span>
+                </p>
+            </div>
+            <div class="ordered-click">
+                <div class="quxiao">
+                    继续购物
+                </div>
+                <div class="shop-order" @click="orderFn">
+                    去下单
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+    <script src="../../common/src/jquery-3.2.1.min.js"></script>
+    <script src="../../common/src/layer/mobile/layer.js"></script>
+    <script src="../commonUrl.js"></script>
+    <script src="../../common/src/vue2.0.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

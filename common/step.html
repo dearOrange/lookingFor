@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" href="css/step-dc-style2.css" />
+
+<script type="text/javascript" src="src/jquery.min.js"></script>
+<script type="text/javascript" src="src/step-jquery-dc.js"></script>
+    <style>
+        .step_context li a{
+            color:#02548e;
+            line-height:56px;
+           /* background:#ddd!important;*/
+        }
+
+    </style>
+</head>
+
+<body >
+
+
+<div class="step_context test" ></div>
+
+
+
+<script type="text/javascript">
+	//所有步骤的数据
+	var stepListJson=[{StepNum:1,StepText:"下单"},
+    {StepNum:2,StepText:"付款"},
+    {StepNum:3,StepText:"提货"},
+    {StepNum:4,StepText:"结算"},]
+
+	//当前进行到第几步
+	var currentStep=1;
+//new一个工具类
+var StepTool = new Step_Tool_dc("test","mycall");
+//使用工具对页面绘制相关流程步骤图形显示
+StepTool.drawStep(currentStep,stepListJson);
+//回调函数
+function mycall(restult){
+	StepTool.drawStep(result.value,stepListJson);
+
+}
+</script>
+
+</body>
+</html>

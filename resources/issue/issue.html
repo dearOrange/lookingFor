@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布求购</title>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="issue.css">
+    <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+</head>
+<body>
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<div class="wrap-logo">
+    <div class="order-logo">
+
+    </div>
+</div>
+<!--主题内容部分-->
+<div class="main-wrap" id="issue-supply">
+    <div class="main">
+        <div class="main-left">
+            <div class="order-pic">
+                <img id="img" alt="">
+            </div>
+
+            <div class="name">
+
+            </div>
+            <ul class="order-nav">
+                <li>交易管理</li>
+                <li class="my-order">我的订单</li>
+                <li class="shop">我的购物车</li>
+            </ul>
+            <ul class="order-nav order-nav1">
+                <li>账号管理</li>
+                <li class="my-center">个人资料</li>
+                <li>会员认证</li>
+            </ul>
+            <ul class="order-nav order-nav2">
+                <li>求购信息</li>
+                <li class="is-color" >我的求购</li>
+            </ul>
+            <ul class="order-nav  order-nav3">
+                <li>供应信息信息</li>
+                <li class="supply">我的供应</li>
+                <li class="history-supply">历史供应</li>
+            </ul>
+        </div>
+        <div class="main-right">
+            <div class="types">
+	    		<span class="label" style="display: inline-block; width: 75px; text-align: left;font-size: 14px;color: #666;font-weight: 600;margin-right: 0;">类型：</span>
+		    	<Cascader v-model="selectType" :data="data4" :load-data="loadData" style='width: 220px;float: left;margin-bottom: 30px;'></Cascader>
+		    	<!--<Button @click="console.log(selectType)">click</Button>-->
+            </div>
+            <div class="list" style="clear: left;">
+                    <span class="list-span">
+                        规格:
+                    </span>
+                    <span  class="clicktip1">
+                        <span></span>
+                        <img src="../../img/shang1.png" alt="">
+                    </span>
+                <ul style="display: none"  class="clicktip-dis2">
+                    <li  v-for="item in getSpecListArr" v-text="item.name" :specId="item.specId"></li>
+
+                </ul>
+            </div>
+
+            <div class="list">
+                    <span class="list-span">
+                        产地:
+                    </span>
+                    <div id="demo" class="citys" style="height: 50px;text-align: left; width: 500px;">
+		                <p>
+		                    <select name="province" id="aa"></select>
+		                    <select name="city" id='bb' style="width: 100px;"></select>
+		                </p>
+		            </div>
+            </div>
+            <div class="list">
+                    <span>
+                     需求量:
+                    </span>
+                <input class="inp" type="text"/ required>
+            </div>
+            <div class="list"　style="    overflow: hidden; height: auto;">
+                    <span>
+                      备注:
+                    </span>
+               <textarea class="con" maxlength="116" required>
+
+               </textarea>
+            </div>
+            <div class="list">
+                <div class="issue">
+                    发布
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+    <script src="../../common/src/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="../../common/src/jquery.citys.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+ <script  type="text/javascript"  src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+<script src="../commonUrl.js"></script>
+<!--<script src="../../common/src/vue2.0.js"></script>-->
+
+<script src="issue.js" type="text/babel"></script>
+</body>
+</html>

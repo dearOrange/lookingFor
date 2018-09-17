@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>关于我们</title>
+	<link rel="stylesheet" href="../../common/css/common.css">
+	<link rel="stylesheet" href="about-us.css">
+	<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+</head>
+<body>
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+</div>
+<!--主题内容部分-->
+<div class="register-main" style="top: -5px;position:relative;">
+	<div class="login-logo">
+		<h1 style="top: -16px;position:relative;    padding-top: 16px;">
+			<img src="../../img/logo1.png" alt="">
+		</h1>
+	</div>
+</div>
+<div class="register-main1-wrap" id="app" style="padding-top: 20px;">
+	
+	<div class="register-main1" style="    font: 18px/32px '';position: relative;left: 35%;margin-bottom: 100px;">
+            <div class="ab-us-main1" style="padding-left: 60px;">
+                <div class="title">
+                    <span>公司简介—</span><span v-text="companyInfo.company"></span>
+                </div>
+        	 </div>
+        	         	 <div class="logoDiv" style="padding-left: 150px;">
+        	 	<!--<span style="vertical-align: middle;">企业LOGO：</span>-->
+        	 	 <img class="logo" :src="companyInfo.img"  style="vertical-align: middle;"/>
+        	 </div>
+        	 <div class="info0" style="padding-left: 20px;">
+        	 	<ul>
+        	 		<li>
+        	 			        	 	<span>电话：</span>
+        	 			<span v-text="companyInfo.code||'暂无'"></span>
+        	 		</li>
+        	 		<li>
+        	 			        	 	<span>地址：</span>
+        	 	<span v-text="companyInfo.address||'暂无'"></span></br>
+        	 		</li>
+        	 		<li>
+        	 			        	 	<span>QQ：</span>
+        	 	<span v-text="companyInfo.qq||'暂无'"></span></br>
+        	 		</li>
+        	 	</ul>
+        	 </div>
+        	 <div class="detail">
+        	 	<div style="font: 700 24px/64px ''; text-align: center;">介绍</div>
+        	 	<span v-text="companyInfo.detail" style="text-indent: 34px;display: inline-block;"></span>
+        	 </span>
+        	 
+	</div>
+	    	    <!--<Modal
+		        v-model="isLogin"
+		        title="普通的Modal对话框标题">
+		        <p style="text-align: center;font-size: 16px;color: red;">您暂无权限查看此页面，成为我们的会员后可无限浏览网站内容!</br>若您已注册我站会员，请先登录后浏览!</p>
+		        			<div slot="footer" style="text-align: center;">
+								<Button type="success" @click="jump_noLogin(0)" class="v-button">登录</Button>
+								<Button type="error" @click="jump_noLogin(1)" class="v-button">注册</Button>
+							</div>
+		    </Modal>-->
+</div>
+
+
+        	 <div style="font: 700 20px/64px ''; text-align: center;">产品报价</div>
+        	 	<div class="currentCompany">
+        	 				
+							<ul class="main1-tab-nav3-top" style="color: #02548e;font-weight: 600;">
+								<li>名称</li>
+								<li>规格</li>
+								<li>牌号</li>
+								<li>产地</li>
+								<li class="weight">重量(吨) <span class="bg1"></span></li>
+								<li class="price">单价(吨) <span class="bg2"></span></li>
+								<li>备注</li>
+								<li>操作</li>
+							</ul>
+							<div v-show="!supplyList.length" style="text-align: center;padding: 10px;">暂无产品</div>
+							<ul class="main1-tab-nav3-main" v-for="item in supplyList" style="border-bottom:4px solid #f2f2f2;" :dealid="item.dealId">
+								<li v-text="item.goodsName"></li>
+								<li v-text="item.specName"></li>
+								<li v-text="item.gradeName"></li>
+								<li v-text="item.cityName"></li>
+								<li v-text="item.weight"></li>
+								<li v-text="item.price"></li>
+								<li>
+	                        	    <Poptip trigger="hover" :content="item.remark||'无'">
+										<span v-text="item.remark||'无'" style="width: 100px;  display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap"></span>
+								    </Poptip>
+								    
+	                            </li>
+	                             <li class="pos">
+	                                <img src="../../img/goumia.png" class="shopclick" alt="" style="vertical-align: middle;cursor: pointer;">
+	                            </li>
+							</ul>
+				</div>
+
+    <div class="footer-wrap" style="padding-top: 172px;">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../commonUrl.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script src="about-us.js"></script>
+</body>
+</html>

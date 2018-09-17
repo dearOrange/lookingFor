@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>历史供应</title>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="history-supply.css">
+    <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+</head>
+<body>
+<!--头部-->
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<div class="wrap-logo">
+    <div class="order-logo">
+
+    </div>
+</div>
+<!--主题内容部分-->
+<div class="main-wrap" id="hisIssue">
+    <div class="main">
+        <div class="main-left">
+            <div class="order-pic">
+                <img id="img" alt="" src="../../img/timg.jpg">
+            </div>
+
+            <div class="name">
+
+            </div>
+            <ul class="order-nav">
+                <li>交易管理</li>
+                <li class="reset">我的订单</li>
+                <li class="shop">我的购物车</li>
+            </ul>
+            <ul class="order-nav order-nav1">
+                <li>账号管理</li>
+                <li class="my-center">个人资料</li>
+                <li class="edit_pass">修改密码</li>
+            </ul>
+            <ul class="order-nav order-nav2">
+                <li>求购信息</li>
+                <li class="issue">我的求购</li>
+                <!--<li class="history-issue">历史求购</li>-->
+            </ul>
+            <ul class="order-nav order-nav2 order-nav3">
+                <li>供应信息</li>
+                <li class="supply">我的供应</li>
+                <li class="is-color">历史供应</li>
+            </ul>
+        </div>
+        <div class="main-right">
+            <ul class="main-r-top">
+                <!-- <li class="tabcolor list">全部订单</li>
+                 <li class=" list">待付款</li>
+                 <li class=" list">签订合同</li>
+                 <li class="list">交易成功</li>
+                 <li class="list">交易失败</li>-->
+                <li class="tabcolor list"><a>全部订单</a></li>
+                <li>
+                    <!--<img src="../../img/fabu.png" alt="">-->
+                </li>
+            </ul>
+            <ul class="main-r-center">
+                <li>
+                    <!--<input class="his-search" type="text" placeholder="请输入订单号查询..." @change="hisSearchFn">
+                    <button class="his-sup-btn" @click="btnFn"></button>-->
+                </li>
+                <li>
+                    <span class="down-fn">
+                        订单筛选
+                    </span>
+                    <img class="shang" src="../../img/shang1.png" alt="">
+                </li>
+                <li>
+    	         <select id="selectTime" name="time"  @change="selectTime" style="width: 85px; height: 27px;padding-left: 12px;border: 1px solid #000;border-radius: 6px;font-size: 14px;">
+                	<option value="null" selected="true" @change="selectTime">请选择</option>
+                	<option value="30" id="oneMonth" @click="selectTime">一个月</option>
+                	<option value="90" id="threeMonth" @click="selectTime">三个月</option>
+                	<option value="180" id="halfYear" @click="selectTime">半年</option>
+                	<option value="365" id="fullYear" @click="selectTime">一年</option>
+                </select>
+                </li>
+            </ul>
+            <ul class="main-r-list">
+                <li>
+                    名称
+                </li>
+                <li>规格</li>
+                <li>牌号</li>
+                <li>交易地</li>
+                <li class="weight">重量(吨) <span class="bg1"></span></li>
+                <li class="price">单价(吨) <span class="bg2"></span></li>
+                <li>结算金额</li>
+                <li>备注</li>
+            </ul>
+            <div class="main-r-content">
+                <table>
+                    <tr v-for="item in hisIs" :dealId="item.dealId">
+                        <td v-text="item.goodsName"></td>
+                        <td v-text="item.specName"></td>
+                        <td v-text="item.gradeName"></td>
+                        <td v-text="item.cityName"></td>
+                        <td v-text="item.weight"></td>
+                        <td v-text="item.price"></td>
+                        <td v-text="item.totalprice"></td>
+                        <td class="remark" v-text="item.remark" :title="item.remark"></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="display: inline-block;    margin-left: 50px;" v-if="total">
+				<Page :total="total" :current="1" @on-change="changePage" ref='page'></Page>
+			</div>
+        </div>
+    </div>
+</div>
+
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../../common/src/browser.min.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script  type="text/javascript"  src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+<script src="../commonUrl.js"></script>
+<!--<script src="../../common/src/vue2.0.js"></script>-->
+<script src="history-supply.js" type="text/babel"></script>
+</body>
+</html>

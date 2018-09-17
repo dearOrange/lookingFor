@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>行业资讯</title>
+	<link rel="stylesheet" href="../../common/css/common.css">
+	<link rel="stylesheet" href="message-center.css">
+	<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+		<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+</head>
+<body>
+<!--头部-->
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<!--主题内容部分-->
+<div class="main-wrap" id="message">
+	<div class="main">
+		<div class="main-top">
+			<div class="main-top-logo">
+				<div class="logo">
+					<h1>
+						<img src="../../img/logo.png" alt="">
+					</h1>
+				</div>
+				<div class="search">
+					<div class="searchInput">
+
+                        <input type="text" class="searchPush" maxlength="10">
+						<div class="searchBtn">
+
+						</div>
+					</div>
+				</div>
+				<div class="shop">
+					<div class="shop-cart">
+                             <span class="num" v-text="shopTotal">
+                            </span>
+					</div>
+
+				</div>
+			</div>
+			<div class="main-top-list">
+				<div class="main-top-list-left">
+					商品分类
+				</div>
+				<ul class="main-top-list-tab">
+					<li class="index">首页</li>
+					<li class="supermarket">合金超市</li>
+					<li class="supply">供应</li>
+					<li class="buy">求购</li>
+                    <li class="logistics">物流</li>
+                    <li class="financial">金融</li>
+                    <li class="message-center">行业资讯</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main1">
+			<div class="main1-tit">
+				<span>价格指数</span>
+
+				<!--<span><img class="main1-pic" src="../../img/gengduo.png" alt=""></span>-->
+
+			</div>
+			<div class="main-broken">
+                <div class="main-broken1" id="main-line">
+                   <!-- <div class="main-broken1-list" >
+
+                    </div>-->
+                </div>
+                <div class="main-broken" id="main-line1" >
+                    <!-- <div class="main-broken1-list" >
+
+                     </div>-->
+                </div>
+                <div class="main-broken" id="main-line2" >
+                    <!-- <div class="main-broken1-list" >
+
+                     </div>-->
+                </div>
+			</div>
+			<!--类型0市场分析1价格详情2钢厂招标3行业聚焦4行业研究5企业新闻       0硅合金1锰合金2铬合金3镍合金4特种合金5其他合金-->
+			<div class="msg-tab">
+                <ul class="msg-tab-tit">
+                    <li><span>铁合金市场分析</span><img src="../../img/more.png" @click="newsMore(0)"　style="float: right;margin-top: 16px;cursor: pointer;"/></li>
+                    <li><span>铁合金价格详情</span><img src="../../img/more.png" @click="newsMore(1)" style="float: right;margin-top: 16px;cursor: pointer;"/></li>
+                    <li><span>钢厂招标</span><img src="../../img/more.png" @click="newsMore(2)" style="float: right;margin-top: 16px;cursor: pointer;"/></li>
+                </ul>
+                <div class="msg-tab-list">
+                    <ul class="msg-tab-list1 tabOne">
+                        <li @click="newsAjax(0,0)">硅合金</li>
+                        <li @click="newsAjax(0,1)">锰合金</li>
+                        <li @click="newsAjax(0,2)">铬合金</li>
+                        <li @click="newsAjax(0,3)">镍合金</li>
+                        <li @click="newsAjax(0,4)">特种合金</li>
+                        <li @click="newsAjax(0,5)">其他合金</li>
+                    </ul>
+                    <ul class="msg-tab-list1 tabTwo">
+                        <li @click="newsAjax(1,0)">硅合金</li>
+                        <li @click="newsAjax(1,1)">锰合金</li>
+                        <li @click="newsAjax(1,2)">铬合金</li>
+                        <li @click="newsAjax(1,3)">镍合金</li>
+                        <li @click="newsAjax(1,4)">特种合金</li>
+                        <li @click="newsAjax(1,5)">其他合金</li>
+                    </ul>
+                    <ul class="msg-tab-list1 tabThree">
+                        <li @click="newsAjax(2,0)">硅合金</li>
+                        <li @click="newsAjax(2,1)">锰合金</li>
+                        <li @click="newsAjax(2,2)">铬合金</li>
+                        <li @click="newsAjax(2,3)">镍合金</li>
+                        <li @click="newsAjax(2,4)">特种合金</li>
+                        <li @click="newsAjax(2,5)">其他合金</li>
+                    </ul>
+                </div>
+                <div class="msg-tab-con">
+                    <div class="msg-tab-con1 tab-con1">
+                        <div v-for="item in marketNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                            <span v-text="item.title">
+                            </span>
+                            <span v-text="item.createTime">
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="msg-tab-con1">
+                        <div v-for="item in priceNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                            <span v-text="item.title">
+                            </span>
+                            <span v-text="item.createTime">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="msg-tab-con1">
+                        <div v-for="item in zbNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                            <span v-text="item.title">
+                            </span>
+                            <span v-text="item.createTime">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="msg-introduce">
+                    <ul class="msg-introduce-tit">
+                        <li>
+                            <span>
+                                行业聚焦
+                            </span>
+                            <span>
+                                <img src="../../img/gengduo.png"  @click="newsMore(3)"　alt=""　style="cursor: pointer;">
+                            </span>
+                        </li>
+                        <li>
+                             <span>
+                                行业研究
+                            </span>
+                            <span>
+                                <img src="../../img/gengduo.png"  @click="newsMore(4)"alt=""　style="cursor: pointer;">
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="msg-introduce1">
+                        <div class="msg-introduce1-left">
+                        	<!--//行业聚焦-->
+                        	<dl v-for="item in focusNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                                <dt>
+                                    <img :src="item.img" alt="" style="    width: 180px;height: 90px;">
+                                </dt>
+                                <dd>
+                                    <p v-text="item.title">钛合金行业的基本情况</p>
+                                    <p v-html="item.subtitle">铁合金产业是中国行贴产业的重要支柱之一...</p>
+                                    <p v-text="item.createTime">2017-05-14</p>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="msg-introduce1-right">
+                        	<!--//行业研究-->
+                            <div class="msg-introduce1-right1">
+                                <p  v-for="item in studyNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                                    <span v-text="item.title">
+                                        [硅锰]市场僵持 成本推升的价格
+                                    </span>
+                                    <span v-text="item.createTime">
+                                        [05-15]
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="msg-introduce">
+                    <ul class="msg-introduce-tit msg-introduce-tit-copy">
+                        <li>
+                            <span>
+                                企业新闻
+                            </span>
+                            <span>
+                                <img src="../../img/more.png"  @click="newsMore(5)" style="float: right;margin-top: 16px;margin-right:10px;cursor: pointer;">
+                            </span>
+                        </li>
+                        <li>
+                             <!--<span>
+                                行业报告
+                            </span>
+                            <span>
+                                <img src="../../img/gengduo.png" alt="">
+                            </span>-->
+                        </li>
+                    </ul>
+                    <div class="msg-introduce1">
+                        <div class="msg-introduce1-left msg-introduce-left-copy">
+                            <dl v-for="item in companyNews" :newsId="item.newsId"　class="item" @click="newsDetails(item.newsId)">
+                                <dt>
+                                    <img :src="item.img" alt=""  style=" width: 180px;height: 90px;">
+                                </dt> 
+                                <dd>
+                                    <p v-text="item.title">钛合金行业的基本情况</p>
+                                    <p v-html="item.subtitle">铁合金产业是中国行贴产业的重要支柱之一...</p>
+                                    <p v-text="item.createTime">2017-05-14</p>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="msg-introduce1-right">
+                            <!--<div class="msg-introduce1-right1">
+                                <p>
+                                    <span>
+                                        [硅锰]市场僵持 成本推升的价格
+                                    </span>
+                                    <span>
+                                        [05-15]
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>
+                                        [硅锰]市场僵持 成本推升的价格
+                                    </span>
+                                    <span>
+                                        [05-15]
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>
+                                        [硅锰]市场僵持 成本推升的价格
+                                    </span>
+                                    <span>
+                                        [05-15]
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>
+                                        [硅锰]市场僵持 成本推升的价格
+                                    </span>
+                                    <span>
+                                        [05-15]
+                                    </span>
+                                </p>
+
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+						<!--<Modal
+		        v-model="isLogin"
+		        title="提示">
+		        <p style="text-align: center;font-size: 16px;">您暂无权限查看此页面，成为我们的会员后可无限浏览网站内容!</br>若您已注册我站会员，请先登录后浏览!</p>
+		        			<div slot="footer" style="text-align: center;">
+								<Button type="success" @click="jump_noLogin(0)" class="v-button">登录</Button>
+								<Button type="error" @click="jump_noLogin(1)" class="v-button">注册</Button>
+							</div>
+		    </Modal>-->
+</div>
+
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../../common/src/browser.min.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script src="../commonUrl.js"></script>
+<script src="../../common/src/echarts.common.min.js"></script>
+<!--<script src="../../common/src/vue2.0.js"></script>-->
+<script src="message-center.js" type="text/babel"></script>
+		<script>
+				var _hmt = _hmt || [];
+				(function() {
+				  var hm = document.createElement("script");
+				  hm.src = "https://hm.baidu.com/hm.js?2f95082891dba97b087c299371658960";
+				  var s = document.getElementsByTagName("script")[0]; 
+				  s.parentNode.insertBefore(hm, s);
+				})();
+       </script>
+</body>
+</html>

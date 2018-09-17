@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../../common/css/common.css">
+    <link rel="stylesheet" href="../../common/css/layer1.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="header-wrap">
+    <div class="header">
+        <div class="header-left">
+            <img src="../../img/shouye.png" alt="首页" class="header-pic">
+            <span>找铁合金网</span>
+            <span class="login">请登录</span>
+            <span class="register">免费注册</span>
+        </div>
+        <div class="header-right">
+            <span class="my-center">个人中心</span>
+            <span>|</span>
+            <span class="my-order">我的订单</span>
+            <span>|</span>
+            <span>在线客服</span>
+            <span>|</span>
+            <span>
+                <img src="../../img/dianhua.png" alt="">
+            </span>
+            <span style="color:#03acd8;">电话021-35906666（8 : 30 - 17 : 30）</span>
+        </div>
+    </div>
+</div>
+<!--主题内容部分-->
+<div class="login-logo-wrap"　id="login">
+    <div class="login-logo">
+        <h1>
+            <img src="../../img/logo.png" alt="" style="position: relative;top: 2px;">
+        </h1>
+        <span>
+            欢迎登录
+        </span>
+    </div>
+</div>
+<div class="main-wrap">
+        <div class="main">
+            <div class="main-login">
+                <div class="building">
+                    <ul class="building-nav">
+                        <li>
+                            会员登录
+                        </li>
+                        <li>
+                            <input class="code" type="text" placeholder="请输入11位数字" maxlength="11" value=""  autocomplete="on">
+                        </li>
+                        <li>
+                            <input class="code1" type="password" placeholder="请输入密码" maxlength="10" minlength="6" value="">
+                        </li>
+                        <li>
+                        	<span>
+                                <img class="login-pic1" src="../../img/fuxuan1.png" alt="">
+                            </span>
+                            <span>记住密码？</span>
+                            <span style="margin-left:80px">
+                                <img class="login-pic" src="../../img/fuxuan.png" alt="">
+                            </span>
+                            <span>下次自动登录</span>
+
+                        </li>
+                        <li class="logining ">
+                           登录
+                        </li>
+                        <li>
+                            <span class="float forgetPwd" >忘记密码 ？</span>
+                            <span class="float sign">免费注册</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../../common/src/browser.min.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script src="../../common/src/jquery.cookie.js"></script>
+<script src="../../common/src/layer.js"></script>
+<script src="../commonUrl.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

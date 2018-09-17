@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>供应</title>
+		<link rel="stylesheet" href="../../common/css/common.css">
+		<link rel="stylesheet" href="../../common/css/layer.css">
+		<link rel="stylesheet" href="supply.css">
+		<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+		<link rel="stylesheet" href="../../common/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+	</head>
+	<style>
+		#aa {
+			float: left;
+			margin: 12px;
+			padding: 5px;
+		}
+		
+		#bb {
+			float: left;
+			margin: 12px;
+			padding: 5px;
+		}
+	</style>
+
+	<body>
+		<!--头部-->
+		<div class="header1">
+			<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+		</div>
+		<!--主题内容部分-->
+		<div class="main-wrap" id="supermarket">
+			<div class="main">
+				<div class="main-top">
+					<div class="main-top-logo">
+						<div class="logo">
+							<h1>
+                                <img src="../../img/logo.png" alt="">
+                            </h1>
+						</div>
+						<div class="search">
+							<div class="searchInput">
+								<div class="searchPush" contenteditable="true" maxlength="10">
+
+								</div>
+								<div class="searchBtn" @click="searchFn">
+
+								</div>
+							</div>
+						</div>
+						<div class="shop">
+							<div class="shop-cart">
+								<span class="num" v-text="shopNum">
+
+                            </span>
+							</div>
+
+						</div>
+					</div>
+					<div class="main-top-list">
+						<div class="main-top-list-left">
+							商品分类
+						</div>
+						<ul class="main-top-list-tab">
+							<li class="index">首页</li>
+							<li class="supermarket">合金超市</li>
+							<li>供应</li>
+							<li class="my-issue">求购</li>
+							<li class="logistics">物流</li>
+							<li class="financial">金融</li>
+							<li class="message-center">行业资讯</li>
+						</ul>
+					</div>
+				</div>
+				<div class="main1">
+					<div class="main1-tit">
+						<span>供应</span>
+
+						<span><img class="main1-pic" src="../../img/shaixuan.png" alt=""></span>
+						<span>共找到 <b v-text="pageSize"></b> 条数据</span>
+					</div>
+					<div class="main1-content">
+						<ul class="clear classify_ul">
+							<li class="classify l" @click="classifyClick(0)">
+								<a>硅系</a>
+							</li>
+							<li class="classify l" @click="classifyClick(1)">
+								<a>锰系</a>
+							</li>
+							<li class="classify l" @click="classifyClick(2)">
+								<a>铬系</a>
+							</li>
+							<li class="classify l" @click="classifyClick(3)">
+								<a>镍系</a>
+							</li>
+							<li class="classify l" @click="classifyClick(4)">
+								<a>特种合金</a>
+							</li>
+							<li class="classify l" @click="classifyClick(5)">
+								<a>其它合金</a>
+							</li>
+						</ul>
+						<div class="main1-tab">
+							<div class="main1-tab-left">
+								<p>品种:</p>
+								<p>品名:</p>
+								<p>规格:</p>
+								<p>牌号:</p>
+								<p>产地:</p>
+							</div>
+							<div class="main1-tab-right">
+								<div class="nav2 nav-list">
+									<div class="super-left super-left00">
+										<img src="../../img/quan.png" alt="" type="variety">
+									</div>
+									<ul class="super-right super-right00">
+										<li>
+											<a v-for="item in data_getSpecAndGradeByType.varietyList" v-text="item.name" @click="updateList('varietyId',item.varietyId)" type="varietyId" :typeId="item.varietyId"></a>
+										</li>
+									</ul>
+									<!--<div class="super-more">
+                                    <img class="super-more-pic"  src="../../img/gengduo.png" alt="">
+                                </div>-->
+
+								</div>
+								<div class="nav2 nav-list">
+									<div class="super-left super-left0">
+										<img src="../../img/quan.png" alt="" type="goods">
+									</div>
+									<ul class="super-right super-right0">
+										<li>
+											<a v-for="item in data_getSpecAndGradeByType.goodsList" v-text="item.name" @click="updateList('goodsId',item.goodsId)" type="goodsId" :typeId="item.goodsId"></a>
+										</li>
+									</ul>
+									<!--<div class="super-more">
+                                    <img class="super-more-pic"  src="../../img/gengduo.png" alt="">
+                                </div>-->
+
+								</div>
+								<div class="nav2 nav-list" 　style="border-bottom: 1px solid #ccc;">
+									<div class="super-left super-left1">
+										<img src="../../img/quan.png" alt="" type="spec">
+									</div>
+									<ul class="super-right super-right1">
+										<li>
+											<a v-for="item in data_getSpecAndGradeByType.specList" v-text="item.name" @click="updateList('specId',item.specId)"></a>
+										</li>
+									</ul>
+									<!--<div class="super-more">
+                                    <img class="super-more-pic"  src="../../img/gengduo.png" alt="">
+                                </div>-->
+
+								</div>
+								<div class="nav2 nav-list" 　style="border-bottom: 1px solid #ccc;">
+									<div class="super-left super-left2">
+										<img src="../../img/quan.png" alt="" type="grade">
+									</div>
+									<ul class="super-right super-right2">
+										<li>
+											<a v-for="item in data_getSpecAndGradeByType.gradeList" v-text="item.name" @click="updateList('gradeId',item.gradeId)"></a>
+										</li>
+									</ul>
+									<!--<div class="super-more">
+                                    <img class="super-more-pic"  src="../../img/gengduo.png" alt="">
+                                </div>-->
+
+								</div>
+								<div class="nav2 nav-list" style="border-bottom:none;">
+									<div class="super-left super-left3">
+										<img src="../../img/quan.png" alt="" type="city">
+									</div>
+									<div class="super-right super-right3">
+										<!--<li>
+                                        <a  v-for="item in cityArr" v-text="item.cityName" :cityId="item.cityId"></a>
+                                    </li>-->
+										<div id="demo" class="citys" style="height: 50px;text-align: left; width: 400px;">
+											<p>
+												<select name="province" id="aa" style="margin: 12px;height: 30px;"></select>
+												<select name="city" id='bb' style="margin: 12px;height: 30px;"></select>
+											</p>
+										</div>
+									</div>
+
+									<!--<div class="super-more">
+                                    <img class="super-more-pic"  src="../../img/gengduo.png" alt="">
+                                </div>-->
+
+								</div>
+							</div>
+						</div>
+						<!--<div class="more">
+                        <span><img src="../../img/xiayiye.png" alt=""></span>
+                        <span>110</span>
+                        <span>/</span>
+                        <span>1</span>
+                        <span><img src="../../img/shangyiye.png" alt=""></span>
+                    </div>-->
+						<div class="main1-tab-nav3">
+							<ul class="main1-tab-nav3-top">
+								<li>企业</li>
+								<li>名称</li>
+								<li>规格</li>
+								<li>牌号</li>
+								<li>产地</li>
+								<li class="weight">重量(吨) <span class="bg1"></span></li>
+								<li class="price">单价(吨) <span class="bg2"></span></li>
+								<li>备注</li>
+							</ul>
+
+							<ul class="main1-tab-nav3-main" v-for="item in supplyList" style="margin-bottom:4px;" :dealid="item.dealId">
+								<li><a v-text="item.company" @click="jump_company(item.userId)"></a></li>
+								<li v-text="item.goodsName"></li>
+								<li v-text="item.specName"></li>
+								<li v-text="item.gradeName"></li>
+								<li v-text="item.cityName"></li>
+								<li v-text="item.weight"></li>
+								<li v-text="item.price"></li>
+								<li>
+	                        	    <Poptip trigger="hover" :content="item.remark||'无'">
+								        <!--<Button style=" border-radius: 6px;
+													    height: 24px;
+													    width: 38px;
+													    background: #fff;
+													    color: #02548e;
+													    cursor: pointer;
+													    line-height: initial;
+													    border: 1px solid #02548e;">备注</Button>-->
+										<span v-text="item.remark||'无'" style="width: 110px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap"></span>
+								    </Poptip>
+	                            </li>
+	                            <li>
+	                        	    <Poptip trigger="hover" :content="'  电话：'+ item.code  ||'无'">
+								        <img class="smark" src="../../img/lianxi.png" alt="">
+								    </Poptip>
+	                            </li>
+								<li class="pos">
+									<img src="../../img/goumia.png" class="shopclick" alt="">
+								</li>
+
+								<li class="hover-fade" style="" maxlength="24">
+									<div><span>企业:</span><span v-text="item.company"></span></div></br>
+									<div><span>姓名:</span><span v-text="item.userName"></span></div></br>
+									<div><span>电话:</span><span v-text="item.code"></span></div></br>
+								</li>
+							</ul>
+							<div class="main1-tab-nav3-bottom">
+								<!--<!--<div>
+                                <img @click="indexFn" src="../../img/shouye1.png" alt="">
+                            </div>
+                            <div>
+                                <img @click="preFn" src="../../img/shangye1.png" alt="">
+                            </div>-->
+								<!--<span @click="commonFn(n)" v-text="n" v-for="n in Math.ceil(pageSize/10)">
+                            </span>
+                            <div class="market-div">共</div>
+                            <div class="market-div market-div1" v-text="pages">300</div>
+                            <div class="market-div">页</div>
+                            <div class="market-div">转到</div>
+                            <input type="text" class="market-div blue-k"/>
+                            <div class="market-div">页</div>
+                            <div class="market-div" @click="goFn">GO</div>-->
+
+								<div style="display: inline-block;" v-if="pageSize">
+									<Page :total="pageSize" :current="1" @on-change="changePage" ref='page' page-size="20"></Page>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--<Modal
+		        v-model="isLogin"
+		        title="提示">
+		        <p style="text-align: center;font-size: 16px;">您暂无权限查看此页面，成为我们的会员后可无限浏览网站内容!</br>若您已注册我站会员，请先登录后浏览!</p>
+		        			<div slot="footer" style="text-align: center;">
+								<Button type="success" @click="jump_noLogin(0)" class="v-button">登录</Button>
+								<Button type="error" @click="jump_noLogin(1)" class="v-button">注册</Button>
+							</div>
+		    </Modal>-->
+		</div>
+
+		<!--footer部分-->
+    <div class="footer-wrap" style=" padding-top: 550px;">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+		<script src="../../common/src/browser.min.js"></script>
+		<script src="../../common/src/jquery-3.2.1.min.js"></script>
+		<script src="../commonUrl.js"></script>
+		<script src="../../common/src/layer.js"></script>
+		<script type="text/javascript" src="../../common/src/jquery.citys.js"></script>
+		<script src="supply.js" type="text/babel"></script>
+		<script>
+				var _hmt = _hmt || [];
+				(function() {
+				  var hm = document.createElement("script");
+				  hm.src = "https://hm.baidu.com/hm.js?2f95082891dba97b087c299371658960";
+				  var s = document.getElementsByTagName("script")[0]; 
+				  s.parentNode.insertBefore(hm, s);
+				})();
+       </script>
+	</body>
+
+</html>

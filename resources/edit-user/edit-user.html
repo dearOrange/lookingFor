@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人中心</title>
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="../../common/css/imgareaselect-animated.css">
+		<link rel="stylesheet" href="edit-user.css">
+		<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	</head>
+	<body>
+    <!--头部-->
+     <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+    <div class="wrap-logo">
+        <div class="order-logo">
+
+        </div>
+    </div>
+
+    <!--主题内容部分-->
+    <div class="main-wrap" id="mCenter">
+        <div class="main">
+            <div class="main-left">
+                <div class="order-pic" id="box1">
+                    <img  id="img" alt="">
+                    <a id="box">
+
+                            修改头像
+
+                    </a>
+
+                </div>
+
+                <div class="name" v-text="centerMsg.nick">
+
+                </div>
+                <ul class="order-nav">
+                    <li>交易管理</li>
+                    <li class="my-order">我的订单</li>
+                    <li class="shop">我的购物车</li>
+                </ul>
+                <ul class="order-nav order-nav1">
+                    <li>账号管理</li>
+                    <li style="color:#02548e;">个人资料</li>
+                    <li>会员认证</li>
+                </ul>
+                <ul class="order-nav order-nav2">
+                    <li>求购信息</li>
+                    <li class="is-color">我的求购</li>
+                    <!--<li class="history-issue">历史求购</li>-->
+                </ul>
+                <ul class="order-nav order-nav2 order-nav3">
+                    <li>供应信息</li>
+                    <li class="supply">我的供应</li>
+                    <li class="history-supply">历史供应</li>
+                </ul>
+            </div>
+            <div class="main-right">
+                <div class="main-right-one">
+                    <div class="tit">
+                        订单管理
+                    </div>
+                    <ul class="main-right-nav">
+                        <li><span>签订合同</span>  (<span v-text="userMsg.count3"></span>)</li>
+                        <li><span>预付定金</span> (<span v-text="userMsg.count4"></span>)</li>
+                        <li><span>配货装车</span>(<span v-text="userMsg.count5"></span>)</li>
+                        <li><span>货已到厂</span> (<span v-text="userMsg.count7"></span>)</li>
+                        <li><span>订单完成</span> (<span v-text="userMsg.count9"></span>)</li>
+                        <li><span>司机上路</span>(<span v-text="userMsg.count6"></span>)</li>
+                        <li><span>结算开票</span>(<span v-text="userMsg.count8"></span>)</li>
+                    </ul>
+                </div>
+                <div class="main-right-two">
+                    <div class="tit">
+                        会员认证
+                    </div>
+                    <p>
+                        杭州下城区
+                    </p>
+                </div>
+                <div class="main-right-three">
+                    <div class="mrt-tit">
+                        个人中心
+                    </div>
+                    <ul class="mrt-nav">
+                        <li>
+                            手机号:
+                            <span v-text="centerMsg.code"></span>
+                        </li>
+                        <li>
+                            姓名:
+                            <span v-text="centerMsg.name"></span>
+                        </li>
+                        <li>
+                            用户名:
+                            <span v-text="centerMsg.nick"></span>
+                        </li>
+                        <li>
+                            性别:
+                            <span v-text="centerMsg.sex"></span>
+                        </li>
+                        <li>
+                            QQ:
+                            <span v-text="centerMsg.qq"></span>
+                        </li>
+                        <li>
+                            管理员:
+                            <span v-text="centerMsg.adminName"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-right-end">
+                    <div class="mre-tit">
+                        物流信息
+                    </div>
+                    <p>
+                        无
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+    <script src="../../common/src/jquery-3.2.1.min.js"></script>
+    <script src="../../common/src/moxie.js"></script>
+    <script src="../../common/src/plupload.full.min.js"></script>
+    <script src="../../common/src/plupload.dev.js"></script>
+
+    <script src="../../common/src/qiniu.js"></script>
+    <script src="../commonUrl.js"></script>
+    <script src="../../common/src/vue2.0.js"></script>
+    <script src="edit-user.js"></script>
+	</body>
+</html>

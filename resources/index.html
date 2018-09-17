@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>找铁合金网</title>
+		<link rel="stylesheet" href="../common/css/common.css">
+		<link rel="stylesheet" href="../common/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../common/css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" href="../resources/index.css">
+		<link rel='icon' href='../img/16-16.png' type='image/x-ico' />
+			<link rel="stylesheet" type="text/css" href="../common/src/iview.css">
+    <script type="text/javascript" src="../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../common/src/iview.min.js"></script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="header1">
+			<iframe src="../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+		</div>
+		<!--主题内容区域-->
+		<div class="maim-wrap" id="vm">
+
+
+			<div class="maim">
+				<div class="main-tab">
+					<div class="main-tab-top">
+						<div class="mtl-pic">
+							<h1>
+                           <img src="../img/logo.png" alt="">
+                       </h1>
+						</div>
+						<div class="mtl-right">
+							<div class="inp">
+								<input class="in-sear" type="text" placeholder="请输入关键字查询">
+								<button>搜索</button>
+							</div>
+							<div class="shop">
+								<!--<img src="../img/gouwuche.png" alt="">-->
+								<span>购物车</span>
+								<span v-text="getCarListWebTxt"></span>
+								<div class="fade-shop">
+									<p class="p1">
+										<a> 共选中</a>
+										<a class="shop-p" v-text="getCarListWebTxt" style="color:red"></a>
+										<a>件商品</a>
+										<a class="header-nav-btn2" href="javascript:void(0)">查看购物车</a>
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="main-tab-bom">
+						<div class="tab-num">
+							商品分类
+						</div>
+						<ul class="list">
+							<li>
+								<a class="indexcolor active">首页</a>
+							</li>
+							<li class="supermarket">
+								<a class="indexcolor">合金超市</a>
+							</li>
+							<li class="supply">
+								<a class="indexcolor">供应</a>
+							</li>
+							<li class="buy">
+								<a class="indexcolor">求购</a>
+							</li>
+							<li class="logistics">
+								<a class="indexcolor">物流</a>
+							</li>
+							<li class="financial">
+								<a class="indexcolor">金融</a>
+							</li>
+							<li class="about-us">
+								<a class="indexcolor">行业资讯</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="main-banner">
+				<div class="pic-banner">
+					<div class="mb">
+						<ul class="mb-list">
+							<li class="hover1" setId="0">
+								<a class="mb-list-a">
+									硅合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fadeo" style="z-index:1000;display: none;">
+									<ul class="grade">
+
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[0].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[0][x-1].name" :class=" 'varietyId'+indexClassify[0][x-1].varietyId"></a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+							</li>
+							<li class="hover2" setId="1">
+								<a class="mb-list-a">
+									锰合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fade1" style="z-index:1000;display: none">
+									<ul class="grade">
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[1].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[1][x-1].name" :class=" 'varietyId'+indexClassify[1][x-1].varietyId">硅铁</a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+							</li>
+							<li class="hover4" setId="2">
+								<a class="mb-list-a">
+									铬合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fade3" style="z-index:1000;display: none;">
+									<ul class="grade">
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[2].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[2][x-1].name" :class=" 'varietyId'+indexClassify[2][x-1].varietyId">硅铁</a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+							</li>
+							<li class="hover5" setId="3">
+								<a class="mb-list-a">
+									镍合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fade4" style="z-index:1000;display: none;">
+									<ul class="grade">
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[3].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[3][x-1].name" :class=" 'varietyId'+indexClassify[3][x-1].varietyId">硅铁</a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+							</li>
+							<li class="hover6" setId="4">
+								<a class="mb-list-a">
+									特种合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fade5" style="z-index:1000;display: none;">
+									<ul class="grade">
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[4].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[4][x-1].name" :class=" 'varietyId'+indexClassify[4][x-1].varietyId">硅铁</a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+								</a>
+							</li>
+							<li class="hover7" setId="4">
+								<a class="mb-list-a">
+									其它合金
+									<span></span>
+								</a>
+								<div class="mb-fade mb-fade6" style="z-index:1000;display: none;">
+									<ul class="grade">
+										<ul class="xuhuan">
+											<li v-for="x in indexClassify[5].length" class="gui" :varietyIndex='x'>
+												<a style="font-size: 16px;" v-text="indexClassify[5][x-1].name" :class=" 'varietyId'+indexClassify[5][x-1].varietyId">硅铁</a>
+											</li>
+										</ul>
+									</ul>
+								</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="lunbo">
+					<div class="swiper-container1" style="width:100%;height:100%;">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" style="height:400px;">
+								<img class="index-pic" src="../img/one.jpg" alt="">
+							</div>
+							<div class="swiper-slide" style="height:400px;">
+								<img class="index-pic" src="../img/two.jpg" alt="">
+
+							</div>
+							<div class="swiper-slide" style="height:400px;">
+								<img class="index-pic" src="../img/four.jpg" alt="">
+							</div>
+							<div class="swiper-slide" style="height:400px;">
+								<img class="index-pic" src="../img/five.jpg" alt="">
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-prev" style="background:url(../img/shangye.png);width:23px;height:36px;"></div>
+						<div class="swiper-button-next" style="background:url(../img/xiaye.png);width:23px;height:36px;"></div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="main-index">
+				<div class="main-tit">
+					<p>铁合金指数</p>
+				</div>
+				<div class="main-index1">
+					<p class="index-tit1">硅铁合金</p>
+					<div class="msg">
+						<div class="msg-index1">
+							<div class="msg-index1-tit">
+								<span>全国景气指数</span>
+								<span class="sum1" v-text="total1"></span>
+								<span class="hot" v-text="hot0" v-if="hot0" :class="{colorOne:hot0=='成交火爆',colorTwo:hot0=='成交活跃',colorThree:hot0=='成交尚可',colorFour:hot0=='成交一般',colorFive:hot0=='成交清淡'}"></span>
+							</div>
+							<ul class="msg-index1-list guixi">
+								<img src="../img/loding.gif" alt="loding" v-show="lodingGif" style="width:200px;height:200px;">
+								<li v-for="item in noByTypeList1" v-show="!lodingGif" style="display: none;">
+									<div>
+										<span class="city1" v-text="item.cityName">
+                                        </span>
+										<span class="item_hot" v-text="item.hot" :class="{hotred:item.hot=='成交火爆',orange:item.hot=='成交活跃',yellow:item.hot=='成交一般',minyellow:item.hot=='成交尚可',green:item.hot=='成交清淡'}"></span>
+										<span class="progress-num count1 count" v-text="item.yesterday">
+                                        </span>
+
+									</div>
+									<div class="progressM zs1">
+										<span class="index1-progress1"></span>
+										<span class="index1-progress2">
+                                            <img class="index1-progress2img" src="../img/jindu.png" alt="">
+                                        </span>
+										<span class="index1-progress3"></span>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="msg-index2">
+							<div class="tit">
+								<a class="location" 　v-text="now_city_name+'价格'" 　style="	background: url(../img/loc.png) no-repeat;padding-left: 18px;font: 14px/24px '';text-decoration: none;color:#000"></a>
+								<a v-for="item in noByTypeList1" v-text="item.cityName" @click="cityNews(item.cityId,0,item.cityName)" style="cursor: pointer;"></a>
+							</div>
+							<ul class="msg-content">
+								<li v-for="item in getDealAvgList">
+
+									<div class="index-tit">
+										<span v-text="item.company"></span>
+										<span v-text="item.gradeName" class="con-good">
+
+                                    </span>
+									</div>
+									<div class="index-san">
+										<div class="index-san1">
+											<p>日期</p>
+											<p v-text="item.createTime" class="time"></p>
+										</div>
+										<div class="index-san1">
+											<p>吨数</p>
+											<p style="font-size:18px;color:#ffb2b0;" v-text="item.weight"></p>
+
+										</div>
+										<div class="index-san1">
+											<p>价格</p>
+											<p class="xia" :class="{active_d:item.isDel==2}" :class="{active_z:item.isDel==1}">
+												<span v-text="item.price"></span>
+											</p>
+
+										</div>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+						<div class="msg-index3">
+							<div id="main" style="width:436px;height:270px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="main-index1">
+					<p class="index-tit1">硅锰合金</p>
+					<div class="msg">
+						<div class="msg-index1">
+							<div class="msg-index1-tit">
+								<span>全国景气指数</span>
+								<span class="sum2" v-text="total2"></span>
+								<span class="hot" v-text="hot1" v-if="hot1" :class="{colorOne:hot1=='成交火爆',colorTwo:hot1=='成交活跃',colorThree:hot1=='成交尚可',colorFour:hot1=='成交一般',colorFive:hot1=='成交清淡'}"></span>
+							</div>
+							<ul class="msg-index1-list mengxi">
+								<img src="../img/loding.gif" alt="loding" v-show="lodingGif1" style="width:200px;height:200px;">
+								<li v-for="item in noByTypeList2" v-show="!lodingGif1" style="display: none;">
+									<div>
+										<span v-text="item.cityName"></span>
+										<span v-text="item.hot" class="item_hot" :class="{hotred:item.hot=='成交火爆',orange:item.hot=='成交活跃',yellow:item.hot=='成交一般',minyellow:item.hot=='成交尚可',green:item.hot=='成交清淡'}"></span>
+										<span class="progress-num count2 count" v-text="item.yesterday">
+                                        </span>
+
+									</div>
+									<div class="progressM zs2">
+										<span class="index2-progress1 progress1"></span>
+										<span class="index2-progress2 progress2">
+                                            <img class="progress2img" src="../img/jindu.png" alt="">
+                                        </span>
+										<span class="index2-progress3 progress3"></span>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="msg-index2">
+							<div class="tit">
+								<a class="location" 　v-text="now_city_name1+'价格'" 　style="	background: url(../img/loc.png) no-repeat;padding-left: 18px;font: 14px/24px '';text-decoration: none;color:#000"></a>
+								<a v-for="item in noByTypeList2" v-text="item.cityName" @click="cityNews(item.cityId,1,item.cityName)" style="cursor: pointer;"></a>
+							</div>
+							<ul class="msg-content">
+								<li v-for="item in getDealAvgList1">
+									<div class="index-tit">
+										<span v-text="item.company"></span>
+										<span v-text="item.gradeName">
+
+                                    </span>
+									</div>
+									<div class="index-san">
+										<div class="index-san1">
+											<p>日期</p>
+											<p v-text="item.createTime" class="time"></p>
+										</div>
+										<div class="index-san1">
+											<p>吨数</p>
+											<p style="font-size:18px;color:#ffb2b0;" v-text="item.weight"></p>
+
+										</div>
+										<div class="index-san1">
+											<p>价格</p>
+											<p class="xia" :class="{active_d:item.isDel==2}" :class="{active_z:item.isDel==1}">
+												<span v-text="item.price"></span>
+											</p>
+
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="msg-index3">
+							<div id="main1" style="width:436px;height:270px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="main-index1">
+					<p class="index-tit1">高碳铬铁</p>
+					<div class="msg">
+						<div class="msg-index1">
+							<div class="msg-index1-tit">
+								<span>全国景气指数</span>
+								<span class="sum sum3" v-text="total3"></span>
+								<span class="hot" v-text="hot2" v-if="hot2" :class="{colorOne:hot2=='成交火爆',colorTwo:hot2=='成交活跃',colorThree:hot2=='成交尚可',colorFour:hot2=='成交一般',colorFive:hot2=='成交清淡'}"></span>
+							</div>
+							<ul class="msg-index1-list gexi">
+								<img src="../img/loding.gif" alt="loding" v-show="lodingGif2" style="width:200px;height:200px;">
+								<li v-for="item in noByTypeList3" v-show="!lodingGif2" style="display: none;">
+									<div>
+										<span v-text="item.cityName"></span>
+										<span v-text="item.hot" class="item_hot" :class="{hotred:item.hot=='成交火爆',orange:item.hot=='成交活跃',yellow:item.hot=='成交一般',minyellow:item.hot=='成交尚可',green:item.hot=='成交清淡'}"></span>
+										<span class="progress-num count3 count" v-text="item.yesterday">
+                                        	
+                                        </span>
+
+									</div>
+									<div class="progressM zs3">
+										<span class="index3-progress1"></span>
+										<span class="index3-progress2">
+                                            <img class="progress2img" src="../img/jindu.png" alt="">
+                                        </span>
+										<span class="index3-progress3"></span>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="msg-index2">
+							<div class="tit">
+								<a class="location" 　v-text="now_city_name2+'价格'" 　style="	background: url(../img/loc.png) no-repeat;padding-left: 18px;font: 14px/24px '';text-decoration: none;color:#000"></a>
+								<a v-for="item in noByTypeList3" v-text="item.cityName" @click="cityNews(item.cityId,2,item.cityName)" style="cursor: pointer;"></a>
+							</div>
+							<ul class="msg-content">
+								<li v-for="item in getDealAvgList2">
+									<div class="index-tit">
+										<span v-text="item.company"></span>
+										<span v-text="item.gradeName">
+
+                                    </span>
+									</div>
+									<div class="index-san">
+										<div class="index-san1">
+											<p>日期</p>
+											<p v-text="item.createTime" class="time"></p>
+										</div>
+										<div class="index-san1">
+											<p>吨数</p>
+											<p style="font-size:18px;color:#ffb2b0;" v-text="item.weight"></p>
+
+										</div>
+										<div class="index-san1" style="border:0;">
+											<p>价格</p>
+											<p class="xia" :class="{active_d:item.isDel==2}" :class="{active_z:item.isDel==1}">
+												<span v-text="item.price"></span>
+											</p>
+
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="msg-index3">
+							<div id="main2" style="width:436px;height:270px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="main-index1">
+					<p class="index-tit1">镍</p>
+					<div class="msg">
+						<div class="msg-index1">
+							<div class="msg-index1-tit">
+								<span>全国景气指数</span>
+								<span class="sum sum4" v-text="total4"></span>
+								<span class="hot" v-text="hot3" v-if="hot3" :class="{colorOne:hot3=='成交火爆',colorTwo:hot3=='成交活跃',colorThree:hot3=='成交尚可',colorFour:hot3=='成交一般',colorFive:hot3=='成交清淡'}"></span>
+							</div>
+							<ul class="msg-index1-list niexi">
+								<img src="../img/loding.gif" alt="loding" v-show="lodingGif3" style="width:200px;height:200px;">
+								<li v-for="item in noByTypeList" v-show="!lodingGif3" style="display: none;">
+									<div>
+										<span v-text="item.cityName"></span>
+										<span v-text="item.hot" class="item_hot" :class="{hotred:item.hot=='成交火爆',orange:item.hot=='成交活跃',yellow:item.hot=='成交一般',minyellow:item.hot=='成交尚可',green:item.hot=='成交清淡'}"></span>
+										<span class="progress-num index-num count4 count" v-text="item.yesterday">
+                                        </span>
+
+									</div>
+									<div class="progressM zs4">
+										<span class="index4-progress1"></span>
+										<span class="index4-progress2">
+                                            <img class="progress2img" src="../img/jindu.png" alt="">
+                                        </span>
+										<span class="index4-progress3"></span>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="msg-index2">
+							<div class="tit">
+								<a class="location" 　v-text="now_city_name3+'价格'" 　style="	background: url(../img/loc.png) no-repeat;padding-left: 18px;font: 14px/24px '';text-decoration: none;color:#000"></a>
+								<a v-for="item in noByTypeList" v-text="item.cityName" @click="cityNews(item.cityId,3,item.cityName)" style="cursor: pointer;"></a>
+							</div>
+							<ul class="msg-content">
+								<li v-for="item in getDealAvgList3">
+									<div class="index-tit">
+										<span v-text="item.company"></span>
+										<span v-text="item.gradeName">
+
+                                    </span>
+									</div>
+									<div class="index-san">
+										<div class="index-san1">
+											<p>日期</p>
+											<p v-text="item.createTime" class="time"></p>
+										</div>
+										<div class="index-san1">
+											<p>吨数</p>
+											<p style="font-size:18px;color:#ffb2b0;" v-text="item.weight"></p>
+
+										</div>
+										<div class="index-san1">
+											<p>价格</p>
+											<p class="xia" :class="{active_d:item.isDel==2}" :class="{active_z:item.isDel==1}">
+												<span v-text="item.price"></span>
+											</p>
+
+										</div>
+									</div>
+								</li>
+
+							</ul>
+							</ul>
+
+						</div>
+						<div class="msg-index3">
+							<div id="main3" style="width:436px;height:270px;"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="main-index1 wlmain">
+					<p class="index-tit1">物流</p>
+					<div class="msg">
+						<div class="msg-index1 wlpic">
+							<img src="../img/wuliu_1.png" alt="">
+						</div>
+						<div class="msg-index2 wlbanner">
+							<div class="msgban">
+								<div class="swiper-container" style="width:628px;height:160px;">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" v-for="item in expressArr">
+											<div class="slide1" v-for="sub in item">
+												<div>
+													<span v-text="sub.address">
+                                            	        江苏 扬州市——无锡市区
+                                                </span>
+												</div>
+												<div v-text="'运价 '+sub.price+'元/吨'" style="margin-top: 10px;">
+													优惠价 : 18元/吨
+												</div>
+												<div style="margin-top: 20px;">
+													<img src="../img/fahuo.png" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 如果需要导航按钮 -->
+									<div class="swiper-button-prev" style="background:url(../img/shangye.png);width:23px;height:36px;"></div>
+									<div class="swiper-button-next" style="background:url(../img/xiaye.png);width:23px;height:36px;"></div>
+
+								</div>
+							</div>
+							<div class="msg-way">
+								<span>价格透明</span>
+								<span>随时下单</span>
+								<span>全程跟踪</span>
+								<span>急单回程</span>
+								<span>一吨起运</span>
+							</div>
+						</div>
+						<div class="msg-index3 wlpic1 ">
+							<img src="../img/wuliutu_2.png" alt="">
+						</div>
+					</div>
+				</div>
+			
+				<div class="main-index1">
+					<p class="index-tit1">供应商</p>
+					<ul class="main-index1-msg">
+						<li v-for="item in supplierList" @click="upSupplier(item.userId)">
+							<a><img :src="item.img" alt="" 　style="cursor: pointer;"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--<Modal
+		        v-model="isLogin"
+		        title="提示">
+		        <p style="text-align: center;font-size: 16px;">您暂无权限查看此页面，成为我们的会员后可无限浏览网站内容!</br>若您已注册我站会员，请先登录后浏览!</p>
+		        			<div slot="footer" style="text-align: center;">
+								<Button type="success" @click="jump_noLogin(0)" class="v-button">登录</Button>
+								<Button type="error" @click="jump_noLogin(1)" class="v-button">注册</Button>
+							</div>
+		    </Modal>-->
+		</div>
+		<!--页面底部区域-->
+		<div class="footer-wrap">
+			<!--<div class="bottomBg"></div>-->
+			<div class="footer">
+				<iframe src="../common/common-ifram-foot.html" width="100%" height="420px" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+		<script src="../common/src/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+		<script src="../resources/commonUrl.js"></script>
+		<script src="https://cdn.bootcss.com/echarts/3.6.1/echarts.common.min.js"></script>
+		<script src="../common/src/swiper-3.4.2.jquery.min.js"></script>
+		<!--<script src="../common/src/vue.min.js"></script>-->
+		<script src="../common/src/vue-resource.js"></script>
+		<script type="text/javascript" src="../common/src/jquery.citys.js"></script>
+		<script src="../resources/index.js" type="text/babel"></script>
+		<script>
+			//轮播图
+
+			setTimeout(function() {
+				var mySwiper1 = new Swiper('.swiper-container1', {
+					direction: 'horizontal',
+					loop: true,
+
+					// 如果需要分页器
+					pagination: '.swiper-pagination',
+
+					// 如果需要前进后退按钮
+					nextButton: '.swiper-button-next',
+					prevButton: '.swiper-button-prev',
+					autoplay: 3000
+
+				})
+				var mySwiper = new Swiper('.swiper-container', {
+					direction: 'horizontal',
+					loop: true,
+
+					// 如果需要分页器
+					//					    pagination: '.swiper-pagination',
+
+					// 如果需要前进后退按钮
+					nextButton: '.swiper-button-next',
+					prevButton: '.swiper-button-prev',
+					autoplay: 3000
+
+				})
+			}, 3000)
+		</script>
+		
+		<script>
+				var _hmt = _hmt || [];
+				(function() {
+				  var hm = document.createElement("script");
+				  hm.src = "https://hm.baidu.com/hm.js?2f95082891dba97b087c299371658960";
+				  var s = document.getElementsByTagName("script")[0]; 
+				  s.parentNode.insertBefore(hm, s);
+				})();
+       </script>
+
+	</body>
+
+</html>

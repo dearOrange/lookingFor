@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>新闻详情</title>
+	<link rel="stylesheet" href="../../common/css/common.css">
+	<link rel="stylesheet" href="newsDetails.css">
+	<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<style>
+		.main-wrap .title{
+			text-align: center;
+		}
+		.content{
+			padding: 100px 0 200px 0;
+			width: 760px;
+			margin: 0 auto;
+		}
+		.content table{
+			margin: 0 auto;
+		}
+		.sub{
+			text-align: center;
+		}
+		.recommend{
+			  text-align: center;
+		}
+		.content p{
+			display: inline-block;
+			width: 100%;
+		}
+		.content p > img{
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body style="text-align: initial;">
+<!--头部-->
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<!--主题内容部分-->
+<div class="main-wrap" id="message">
+	<h1 v-text="obj.title" class="title"></h1>
+	<div class="sub">
+		<span v-text="obj.subtitle" class="subtitle"></span>
+		<span v-text="obj.createTime" class="createTime"></span>		
+	</div>
+
+	<div v-html="obj.content" class="content"></div>
+	<div class="recommend">
+		<h2>推荐新闻</h2>
+		<ul>
+			<li v-for="item in recommend_obj" class="newsLi" style="clear: both;">
+				<a class="title" v-text="item.title" @click="newsDetails(item.newsId)"></a>
+				<a class="createTime" v-text="item.createTime"></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../../common/src/browser.min.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script src="../commonUrl.js"></script>
+<script src="../../common/src/vue2.0.js"></script>
+<script src="newsDetails.js" type="text/babel"></script>
+<script>
+
+</script>
+</body>
+</html>

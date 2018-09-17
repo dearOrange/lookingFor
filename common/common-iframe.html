@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/common-iframe.css">
+</head>
+<body>
+<div class="header-wrap">
+    <div class="header">
+        <div class="header-left">
+            <img src="../img/shouye.png" alt="首页" class="header-pic">
+            <!--<span>找铁网</span>-->
+            <span class="login">请登录</span>
+            <span class="register" style="display: none;">免费注册</span>
+            <span class="outLogin" style="display: none;">退出登录</span>
+        </div>
+        <div class="header-right">
+            <span class="my-center">个人中心</span>
+            <span>|</span>
+            <span class="my-order">我的订单</span>
+            <span>|</span>
+            <span>
+            	在线客服
+            	<!--<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=172594452&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:172594452:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>-->
+            </span>
+            <span>|</span>
+            <img src="../img/dianhua.png" alt=""  style="margin-top:12px;"/>
+            <span style="color:#00b2df;">电话0514-87195912（8 : 30 - 17 : 30）</span>
+        </div>
+    </div>
+</div>
+<script src="src/jquery-3.2.1.min.js"></script>
+<script src="../resources/commonUrl.js"></script>
+<script>
+	(function(){	
+		var getUserById=window.dataUrl+"/personal/getUserById"
+		
+		
+		        if(get_cookie("code")&&get_cookie("pwd")&&get_cookie("code")!=''&&get_cookie("pwd")!=""){
+//		        	解码
+    				var hexToDec = function(str) {
+					    str=str.replace(/\\/g,"%");
+					    return unescape(str);
+					}
+			        ajax({
+			            url:window.dataUrl+"/main/loginUser",
+			            type: "post",
+			            data: JSON.stringify({
+			            	
+			                "code":hexToDec(get_cookie("code")),
+			                "pwd":hexToDec(get_cookie("pwd"))
+			            }),
+			            headers: {
+			                "Content-Type": "application/json;charset=UTF-8"
+			            },
+			            success: function (data) {
+			                if(data.code=="200"){
+            					 //用户信息
+						        ajax({   
+							        url: getUserById,
+							        type: "post",
+							        headers: {
+							            "Content-Type": "application/json;charset=UTF-8"
+							        },
+							        success: function (data) {
+							            if(data.code==200){
+							                $(".login").html("欢迎您\n,\n"+data.obj.name+"!!").css({
+						                        "color":"#00b2df"
+						                    })
+							                //退出登录显示
+						                    $(".outLogin").css({
+						                       	"display":"block"
+						                    })
+							                $(".my-center").click(function () {
+								                window.parent.window.location.href="../resources/my-center/my-center.html"
+								            })
+								            /*my-order*/
+								            $(".my-order").click(function () {
+								                window.parent.window.location.href="../resources/my-order/my-order.html"
+								            })
+							            }else if(data.code!=200){ 
+							            	//注册显示
+		            						$(".register").css({
+							            		 "display":"block"
+						                    })
+							            }
+							        }
+							    })	    
+			                }
+			
+			            }
+			        })
+			    }else{
+			    	//注册显示
+					$(".register").css({
+	            		 "display":"block"
+                    })
+			    }
+	     $(".outLogin").click(function () {
+	     	console.log('outLogin')
+		    var d = new Date();
+		    d.setTime(d.getTime() + (1*24*60*60*1000));
+		    var expires = "expires="+d.toUTCString();
+	     	document.cookie="pwd="+""+"; expires="+expires+"; path =/";
+			document.cookie="code="+""+"; expires="+expires+"; path =/";
+			
+			window.parent.window.location.href="../resources/login/login.html"
+         })
+    function get_cookie(Name) {
+        var search = Name + "="//查询检索的值
+        var returnvalue = "";//返回值
+        if (document.cookie.length > 0) {
+            sd = document.cookie.indexOf(search);
+            if (sd!= -1) {
+                sd += search.length;
+                end = document.cookie.indexOf(";", sd);
+                if (end == -1)
+                    end = document.cookie.length;
+                //unescape() 函数可对通过 escape() 编码的字符串进行解码。
+                returnvalue=unescape(document.cookie.substring(sd, end))
+            }
+        }
+        return returnvalue;
+    }
+
+				    
+		
+			$(".login").click(function () {
+            	if($(this).html()=="请登录"){
+            		window.parent.window.location.href="../resources/login/login.html"
+            	}
+                
+            })
+            /*register*/
+            $(".register").click(function () {
+               window.parent.window.location.href="../resources/register/register.html"
+            })
+            /*my-center*/
+		$(".header-pic").click(function () {
+				window.parent.window.location.href="../resources/index.html"
+		})
+        if($(".login").html()=="请登录"){
+            $(".my-order").on("click",function(){
+                window.parent.window.location.href="../resources/login/login.html"
+            })
+            $(".my-center").on("click",function(){
+                window.parent.window.location.href="../resources/login/login.html"
+            })
+        }
+
+            
+	})(jQuery,window)
+	
+</script>
+</body>
+</html>

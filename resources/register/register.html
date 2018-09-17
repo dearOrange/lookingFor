@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" href="../../common/css/common.css">
+        <link rel="stylesheet" href="register.css">
+        <link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+                <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+	</head>
+	<body>
+    <div class="header-wrap">
+        <div class="header">
+            <div class="header-left">
+                <img src="../../img/shouye.png" alt="首页" class="header-pic">
+                <span>找铁网</span>
+                <span class="login">请登录</span>
+                <span class="register">免费注册</span>
+            </div>
+            <div class="header-right">
+
+                <span class="my-center">个人中心</span>
+                <span>|</span>
+                <span class="my-order">我的订单</span>
+
+                <span>|</span>
+                <span>在线客服</span>
+                <span>|</span>
+                <img src="../../img/dianhua.png" alt="">
+                <span class="color">电话021-35906666（8 : 30 - 17 : 30）</span>
+            </div>
+        </div>
+    </div>
+    <!--主题内容部分-->
+    <div class="register-main">
+        <div class="login-logo">
+            <h1>
+                <img src="../../img/logo.png" alt="" style="    position: relative; top: 2px;">
+            </h1>
+        <span>
+            欢迎注册
+        </span>
+        </div>
+    </div>
+    <div class="register-main1-wrap" id="regVue">
+        <div class="register-main1">
+            <div class="register-main1-tit">
+                填写用户信息
+            </div>
+            <div class="register-main1-tit1">
+                账号信息
+            </div>
+            <ul class="register-list">
+                <li>
+                    <label for="call">
+                        <span>手机号码:</span>
+                        <span>* </span>
+                        <input id="call" type="text" value="" placeholder="手机号码" autofocus="autofocus">
+                        <span class="dis">
+                            请输入正确的手机号
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label for="passw">
+                        <span>设置密码:</span>
+                        <span>*</span>
+                        <input id="passw" type="password" value="" placeholder="请输入密码" maxlength="20">
+                         <span class="dis1">
+                            请输入正确的密码
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label for="reset">
+                        <span>确认密码:</span>
+                        <span>*</span>
+                        <input id="reset" type="password" value="" placeholder="请再次输入密码" maxlength="20">
+                        <span class="dis2">
+                            您两次输入的密码不同！
+                        </span>
+                    </label>
+                </li>
+                <!--<li>
+                  <label for="code">
+                        <span>验证码:</span>
+                        <span>*</span>
+                        <input id="code" type="text" value="" placeholder="请输入验证码">
+                        <span>
+                            <img class="verificationcode" src="http://192.168.0.169:8072/verificationcode" alt="">
+                            <img class="verificationcode" :src="src" alt="">
+                           
+                        </span>
+                        <span class="codeHuan">
+                            看不清？换一张
+                        </span>
+                        <span class="dis3">
+                            验证码不能为空！
+                        </span>
+                    </label>
+                </li>-->
+                <li>
+                    <label for="check">
+                        <span>校验码:</span>
+                        <span>*</span>
+                        <input id="check" type="text" value="" placeholder="请输入校验码">
+                        <span class="code-pic" style="background: #02548e;color: #fff;border-radius: 4px;cursor: pointer;">
+                        	获取验证码
+                        </span>
+                        <span class="dis4">
+                            校验码不能为空！
+                        </span>
+                    </label>
+                </li>
+            </ul>
+            <div class="register-list1">
+                <div class="register-list1-tit">
+                    更多信息
+                </div>
+                <ul class="register-list1-list">
+                    <li>
+                        <label for="name">
+                            <span>真实姓名:</span>
+                            <input id="name" type="text" value="" placeholder="真实姓名">
+                        </label>
+                        <span class="dis5" style="display:none;">
+                            真实姓名不能为空！
+                        </span>
+                    </li>
+                    <li>
+                        <label for="company">
+                            <span>公司名称:</span>
+                            <input id="company" type="text" value="" placeholder="公司名称">
+                        </label>
+                        <span class="dis6" style="display:none;">
+                            公司名称不能为空！
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            所在区域:
+                        </span>
+                                    <div id="demo" class="citys" style="height: 50px;text-align: left; width: 420px;">
+						                <p>
+						                    <select name="province" id="aa" style="height: 30px;"></select>
+						                    <select name="city" id='bb'style="height: 30px;"></select>
+						                </p>
+						            </div>
+                        <!--<div id="distpicker">
+                            <img class="distpicker-pic1" src="../../img/xiala.png"/>
+                            <img class="distpicker-pic2" src="../../img/xiala.png"/>
+                            <select class="sel1" >
+                               <option value="请选择" checked>请选择</option>
+                                <option  v-for="(item,index) in province" v-text="item.name" class="opt"></option>
+                            </select>
+                            <select class="sel2">
+                                <option value="请选择" checked>请选择</option>
+                                <option v-for="(items,index) in cityArr" v-text="items.name"></option>
+                            </select>
+                        </div>-->
+                    </li>
+                    <li>
+                        <span>
+                            <img class="reg-pic" src="../../img/fuxuan.png" alt="">
+                        </span>
+                        <span>
+                            我已阅读并同意
+                        </span>
+                        <span>
+                            《找铁合金用户管理条例》
+                        </span>
+                    </li>
+                    <li>
+                        <img class="submit" src="../../img/tijiao.png" alt="" @click="submit">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+    <script src="../../common/src/browser.min.js"></script>
+    <script src="../../common/src/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../common/src/jquery.citys.js"></script>
+    <script src="../commonUrl.js"></script>
+    <script src="../../common/src/distpicker.data.js"></script>
+    <script src="../../common/src/distpicker.js"></script>
+    <!--<script src="../../common/src/vue2.0.js"></script>-->
+    <script src="register.js" type="text/babel"></script>
+	</body>
+</html>

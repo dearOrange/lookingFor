@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>新闻详情</title>
+	<link rel="stylesheet" href="../../common/css/common.css">
+	<link rel="stylesheet" href="newsList.css">
+	<link rel='icon' href='../../img/16-16.png' type='image/x-ico' /> 
+	<link rel="stylesheet" type="text/css" href="../../common/src/iview.css">
+    <script type="text/javascript" src="../../common/src/vue.min.js"></script>
+    <script type="text/javascript" src="../../common/src/iview.min.js"></script>
+	<style>
+		.main-wrap .title{
+			font: 700 16px.50px '';
+		}
+		.content{
+			padding: 100px 0 200px 0;
+			width: 1200px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<!--头部-->
+ <div class="header1">
+		<iframe src="../../common/common-iframe.html" width="100%" height="40" scrolling="no" frameborder="0"></iframe>
+	</div>
+<!--主题内容部分-->
+<div class="main-wrap" id="message">
+	<h2 style="    text-align: center;">新闻列表</h2>
+	<div class="type" v-text="typeContent" style="text-align: left;font: 700 16px/40px ''; text-align: left;margin-left: 10px;">
+	</div>
+	<ul>
+		<li v-for="item in obj" class="newsLi" style="clear: both;">
+			<a class="title" v-text="item.title" @click="newsDetails(item.newsId)"></a>
+			<a class="createTime" v-text="item.createTime"></a>
+		</li>
+	</ul>
+	<div style="display: inline-block;margin-top: 20px;" v-if="total">
+		<Page :total="total" :current="1" @on-change="changePage" ref='page' page-size='20'></Page>
+	</div>
+</div>
+<!--footer部分-->
+    <div class="footer-wrap">
+        <div class="v-footer">
+            <iframe src="../../common/common-ifram-foot.html" width="100%" height="420" scrolling="no" frameborder="0" class="footer-ifr"></iframe>
+        </div>
+    </div>
+<script src="../../common/src/browser.min.js"></script>
+<script src="../../common/src/jquery-3.2.1.min.js"></script>
+<script src="../commonUrl.js"></script>
+<!--<script src="../../common/src/vue2.0.js"></script>-->
+<script src="newsList.js" type="text/babel"></script>
+<script>
+
+</script>
+</body>
+</html>
